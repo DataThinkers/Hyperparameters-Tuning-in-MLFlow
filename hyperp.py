@@ -44,17 +44,6 @@ param_dist = {
 search = RandomizedSearchCV(estimator=rf, param_distributions=param_dist, n_iter=50, cv=5, n_jobs=-1, verbose=2, random_state=42)
 
 
-
-# 3. For Mlflow tracking we have to write
-# with mlflow.start_run():
-#     random_search.fit(X_train, y_train)
-
-#     # log all the children
-#     for i in range(len(random_search.cv_results_['params'])):
-#         with mlflow.start_run(nested=True):
-            
-#             mlflow.log_params(random_search.cv_results_['params'][i])
-#             mlflow.log_metric("accuracy",random_search.cv_results_['mean_test_score'][i])
 # Start the parent MLflow run
 with mlflow.start_run(run_name="Random Forest Tuning") as parent_run:
     
